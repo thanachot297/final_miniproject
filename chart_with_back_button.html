@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>กราฟความหนาแน่นประชากร</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { font-family: 'Kanit', sans-serif; margin: 0; padding: 0; background: #f8f9fa; }
+        #chart { width: 100%; height: 100vh; }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="window.location.href='map_with_dropdown_menu.html'">← กลับหน้าแผนที่</button>
+    <div id="chart"></div>
+    <script>
+        var data = [{
+            x: ["ปทุมวัน", "ดินแดง", "ห้วยขวาง", "บางรัก", "วัฒนา", "ป้อมปราบฯ", "บางคอแหลม", "พระนคร", "สัมพันธวงศ์", "ยานนาวา"],
+            y: [20456, 14230, 13460, 11800, 11023, 9902, 9250, 7900, 7400, 6900],
+            text: ["20,456", "14,230", "13,460", "11,800", "11,023", "9,902", "9,250", "7,900", "7,400", "6,900"],
+            textposition: "auto",
+            type: "bar",
+            marker: {
+                color: [20456, 14230, 13460, 11800, 11023, 9902, 9250, 7900, 7400, 6900],
+                colorscale: "Reds",
+                colorbar: {
+                    title: "ความหนาแน่น<br>(คน/ตร.กม.)"
+                }
+            }
+        }];
+
+        var layout = {
+            title: "10 เขตที่มีประชากรหนาแน่นสูงเนื่องจากพื้นที่เล็ก",
+            xaxis: { title: "ชื่อเขต" },
+            yaxis: { title: "ความหนาแน่นประชากร (คน/ตร.กม.)" }
+        };
+
+        Plotly.newPlot("chart", data, layout, {responsive: true});
+    </script>
+</body>
+</html>
